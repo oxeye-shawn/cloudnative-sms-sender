@@ -1,9 +1,0 @@
-# Default values for SMSSender.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-
-registryName: my-registry-key
-
-global:
-  registrySecret: my-registry-key
-  ecrPath: 839606765811.dkr.ecr.eu-west-2.amazonaws.com/

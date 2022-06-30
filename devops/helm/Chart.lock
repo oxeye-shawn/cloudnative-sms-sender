@@ -1,0 +1,12 @@
+dependencies:
+- name: frontend
+  repository: ""
+  version: 0.1.0
+- name: backend
+  repository: ""
+  version: 0.1.0
+- name: jaeger-all-in-one
+  repository: https://raw.githubusercontent.com/hansehe/jaeger-all-in-one/master/helm/charts
+  version: 0.1.6
+digest: sha256:98718098467656126216952d0ae57e276ccf8347410aa6b06bb7a5cb97253339
+generated: "2022-06-28T16:18:32.502903+03:00"

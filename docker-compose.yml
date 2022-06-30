@@ -1,0 +1,29 @@
+version: '3.5'
+services:
+  frontend:
+    image: frontend
+    build:
+      context: ./frontend
+    environment:
+      BACKEND_SERVICE_SERVICE_HOST: backend
+      OTEL_TRACES_EXPORTER: jaeger_thrift
+      OTEL_SERVICE_NAME: frontend
+      OTEL_EXPORTER_JAEGER_ENDPOINT: http://jaeger:14268/api/traces
+    ports:
+      - 8080:8080
+  backend:
+    image: backend
+    build:
+      context: ./business-logic
+    environment:
+      OTEL_TRACES_EXPORTER: jaeger_thrift
+      OTEL_SERVICE_NAME: backend
+      OTEL_EXPORTER_JAEGER_ENDPOINT: http://jaeger:14268/api/traces
+    ports:
+      - 3000:3000
+  jaeger:
+    image: jaegertracing/all-in-one:1.7
+    container_name: jaeger
+    ports:
+      - 16686:16686
+      - 14268:14268

@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.name }}-deployment
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector: 
+    matchLabels:
+      app: {{ .Values.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.name }}
+    spec:
+      imagePullSecrets:
+        - name: {{ .Values.global.registrySecret }}
+      containers:
+        - name: {{ .Values.name }}
+          image: "{{ .Values.global.ecrPath }}{{ .Values.image.repository }}"
+          env:
+          - name: OTEL_TRACES_EXPORTER 
+            value: jaeger_thrift
+          - name: OTEL_SERVICE_NAME  
+            value: backend
+          - name: OTEL_EXPORTER_JAEGER_ENDPOINT 
+            value: http://$(JAEGER_COLLECTOR_SERVICE_HOST):14268/api/traces

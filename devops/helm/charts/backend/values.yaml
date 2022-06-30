@@ -1,0 +1,17 @@
+# Default values for backend.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+name: backend
+
+replicaCount: 1
+
+image:
+  repository: backend:latest
+  pullPolicy: Always
+  # Overrides tminihe image tag whose default is the chart appVersion.
+  tag: ""
+
+service:
+  type: ClusterIP
+  port: 3000

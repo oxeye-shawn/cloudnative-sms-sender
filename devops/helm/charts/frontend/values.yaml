@@ -1,0 +1,14 @@
+# Default values for frontend.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+name: frontend
+
+replicaCount: 2
+
+image:
+  repository: frontend:latest
+  pullPolicy: Always
+
+service:
+  port: 8080

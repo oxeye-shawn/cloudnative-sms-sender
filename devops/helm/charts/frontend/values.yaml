@@ -9,9 +9,6 @@ replicaCount: 2
 image:
   repository: frontend:latest
   pullPolicy: Always
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
 
 service:
-  type: LoadBalancer
   port: 8080

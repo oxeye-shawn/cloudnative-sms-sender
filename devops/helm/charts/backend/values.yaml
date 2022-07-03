@@ -9,9 +9,6 @@ replicaCount: 1
 image:
   repository: backend:latest
   pullPolicy: Always
-  # Overrides tminihe image tag whose default is the chart appVersion.
-  tag: ""
 
 service:
-  type: ClusterIP
   port: 3000
